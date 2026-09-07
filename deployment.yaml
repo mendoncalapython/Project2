@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: analytics-app
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: analytics-app
+
+  template:
+    metadata:
+      labels:
+        app: analytics-app
+
+    spec:
+      containers:
+        - name: analytics-app
+
+          image: mendoncalanpython/analytics-app:latest
+
+          ports:
+            - containerPort: 80

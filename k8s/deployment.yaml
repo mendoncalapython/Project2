@@ -1,0 +1,29 @@
+stage('Kubernetes Deploy') {
+    steps {
+        sh '''
+            echo "Current directory:"
+            pwd
+
+            echo "Files:"
+            ls -la
+
+            kubectl apply -f deployment.yaml
+            kubectl apply -f svc.yml
+
+            kubectl rollout restart deployment analytics-app
+            kubectl rollout status deployment analytics-app
+        '''
+    }
+}
+
+
+stage('Verify') {
+    steps {
+        sh '''
+            kubectl get nodes
+            kubectl get pods -o wide
+            kubectl get svc
+            kubectl get deployment
+        '''
+    }
+}
