@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "YOUR_DOCKERHUB_USERNAME/analytics-app"
+        DOCKER_IMAGE = "mendoncalanpython/analytics-app"
         DOCKER_TAG = "latest"
     }
 
@@ -30,7 +30,7 @@ pipeline {
                     usernamePassword(
                         credentialsId: 'dockerhub-credentials',
                         usernameVariable: 'mendoncalanpython',
-                        passwordVariable: 'AlanChriselle21@'
+                        passwordVariable: 'dckr_pat_xtObSQt_PKuaJDV-hWWILnIkySs'
                     )
                 ]) {
                     sh '''
