@@ -20,7 +20,7 @@ spec:
       containers:
         - name: analytics-app
 
-          image: YOUR_DOCKERHUB_USERNAME/analytics-app:latest
+          image: mendoncalanpython/analytics-app:latest
 
           ports:
             - containerPort: 80
