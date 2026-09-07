@@ -1,0 +1,26 @@
+name: Release Date Gate
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  check-release-day:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Verify today is the 25th
+        run: |
+          DAY=$(TZ=Asia/Kolkata date +%d)
+
+          echo "Current day: $DAY"
+
+          if [ "$DAY" != "25" ]; then
+            echo "❌ Merges to master are allowed only on the 25th."
+            exit 1
+          fi
+
+          echo "✅ Today is the 25th. Release gate passed."
